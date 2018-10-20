@@ -79,9 +79,7 @@ export default class App extends Component<Props> {
                         let Component = route.component;
                         return <Component navigator={navigator} {...route.params} />
                     }}
-                >
-
-                </Navigator>
+                />
             </View>
         );
     }

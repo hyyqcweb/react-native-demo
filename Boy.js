@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Girl from './Girl'
+import NavigationBar from './NavigationBar'
 
 export default class Boy extends React.Component {
 
@@ -13,7 +14,13 @@ export default class Boy extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={[styles.container, this.props.statusBar]}>
+                <NavigationBar
+                    title={'Boy'}
+                    statusBar={{
+                        backgroundColor: '#EE6363'
+                    }}
+                />
                 <Text style={styles.text}>
                     I am boy
                 </Text>
@@ -40,9 +47,6 @@ export default class Boy extends React.Component {
 
 const styles = StyleSheet.create({
    container: {
-       flex:1,
-       backgroundColor: 'gray',
-       justifyContent:'center'
    },
     text: {
        fontSize: 20

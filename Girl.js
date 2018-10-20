@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet ,TouchableOpacity, Image} from 'react-native';
+import NavigationBar from './NavigationBar'
 
 export default class Boy extends React.Component {
 
@@ -7,10 +8,33 @@ export default class Boy extends React.Component {
         super(props);
         this.state = {}
     }
+    // TouchableOpacity 用户点击事件, 有个动画效果
+    renderButton(image) {
+        return <TouchableOpacity
+                onPress={() => {
+                    this.props.navigator.pop()
+                  }
+                }
+            >
+            <Image style={{width: 22, height: 22, margin: 5}} source={image} />
+        </TouchableOpacity>
+    }
 
     render() {
         return (
             <View style={styles.container}>
+                <NavigationBar
+                    title={'Girl'}
+                    style={{
+                        backgroundColor: '#EE6363'
+                    }}
+                    leftButton={
+                       this.renderButton(require('./res/images/ic_arrow_back_white_36pt.png'))
+                    }
+                    rightButton={
+                        this.renderButton(require('./res/images/ic_star.png'))
+                    }
+                />
                 <Text style={styles.text}>
                     I am Girl
                 </Text>
@@ -31,9 +55,6 @@ export default class Boy extends React.Component {
 }
 const styles = StyleSheet.create({
    container: {
-       flex: 1,
-       backgroundColor: 'red',
-       justifyContent: 'center'
    },
    text: {
        fontSize: 20
